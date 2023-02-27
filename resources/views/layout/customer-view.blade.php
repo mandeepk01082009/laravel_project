@@ -10,6 +10,7 @@
 </head>
 <body >
 	<div class="container">
+    <h1>List of Customers</h1>
    <table class="table">
      <thead>
       <tr>

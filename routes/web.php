@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Models\Customer;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\IndexController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +16,9 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-// Route::get('/',function(){
-//     return view('welcome');
-// });
+Route::get('/',function(){
+    return view('layout.index');
+});
 Route::get('/register',[RegistrationController::class,'index']);
 Route::post('/register',[RegistrationController::class, 'register']);
 Route::get('/customer',function(){
