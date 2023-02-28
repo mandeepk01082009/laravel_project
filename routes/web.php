@@ -21,12 +21,10 @@ Route::get('/',function(){
 });
 Route::get('/register',[RegistrationController::class,'index']);
 Route::post('/register',[RegistrationController::class, 'register']);
-Route::get('/customer',function(){
-	$customers = Customer::all();
-    echo "<pre>";
-    print_r($customers->toArray());
-});
-Route::get('/customer', [CustomerController::class, 'index']);
+Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
+Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
 Route::get('/customer',[CustomerController::class, 'view']);
-Route::post('/customer',[CustomerController::class, 'store']);
+Route::post('/customer',[CustomerController::class, 'store']); 
 

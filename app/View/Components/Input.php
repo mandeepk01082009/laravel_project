@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 class Input extends Component
 {
     public $type ;
-    public $label;
+    public $label;  
     public $name;
     /**
      * Create a new component instance.

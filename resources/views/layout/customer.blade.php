@@ -36,18 +36,20 @@
 <div class="container">
 <div class="row mt-2">
 <div class="col-md-9 col-md-offset-3" >
-	<h4 class="text-center">ADD NEW RECORD | Laravel CRUD</h4>
+	<h3 class="text-center text-primary">
+   {{$title}} 
+  </h3>
 	<hr>
-	<form action="{{url('/')}}/customer" method="post">
+	<form action="{{$url}}" method="post">
     <!-- <form action="store" method="post"> -->
 		@csrf	
 <div class="form-group">
     <label for="">Name</label>
-    <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" class="form-control" name="name" id="exampleInputEmail1" value="{{$customer->name}}" required>
  </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Email</label>
-    <input type="email" class="form-control" name="email" id="exampleInputPassword1">
+    <input type="email" class="form-control" name="email" id="exampleInputPassword1" value="{{$customer->email}}" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
@@ -59,34 +61,34 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Country</label>
-    <input type="text" class="form-control" name="country" id="exampleInputPassword1">
+    <input type="text" class="form-control" name="country" id="exampleInputPassword1" value="{{$customer->country}}" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">State</label>
-    <input type="text" class="form-control" name="state" id="exampleInputPassword1">
+    <input type="text" class="form-control" name="state" id="exampleInputPassword1" value="{{$customer->state}}" required>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Address</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="address"></textarea>
+    <textarea class="form-control" id="address"  name="address" required>{{$customer->address}}</textarea>
   </div>
   <div class="form-group">
   	<label for="exampleFormControlTextarea1">Gender</label>
   	<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="M">
+  <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="M" {{$customer->gender == "M" ? "checked" : ""}} />
   <label class="form-check-label" for="inlineRadio1">M</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="F">
+  <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="F" {{$customer->gender == "F" ? "checked" : ""}}/>
   <label class="form-check-label" for="inlineRadio2">F</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="O">
+  <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="O" {{$customer->gender == "O" ? "checked" : ""}}/>
   <label class="form-check-label" for="inlineRadio2">O</label>
 </div>
   </div>
   <div class="form-group">
   	<label for="exampleFormControlTextarea1">Date of Birth</label>
-  	<input type="date" name="dob" class="form-control">
+  	<input type="date" name="dob" class="form-control" value="{{$customer->dob}}" required>
   </div>
 
 <button type="submit" class="btn btn-primary">Submit</button>
