@@ -34,10 +34,10 @@
 </div>
 </div>
 	<div class="container">
-    <a href="{{url('/customer/create')}}">
+    <a href="{{route('customer.create')}}">
     <button class="btn btn-primary d-inline-block m-2 float-right">Add</button>
   </a>
-   <table class="table" class="table">
+   <table class="table" class="table">  
      <thead>
       <tr>
        <th>Name</th>

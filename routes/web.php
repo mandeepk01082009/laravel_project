@@ -17,7 +17,7 @@ use App\Http\Controllers\IndexController;
 */
 
 Route::get('/',function(){
-    return view('layout.index'); 
+    return view('layout.index');   
 });
 Route::get('/register',[RegistrationController::class,'index']);
 Route::post('/register',[RegistrationController::class, 'register']);
