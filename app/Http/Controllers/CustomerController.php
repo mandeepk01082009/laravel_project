@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Customer;
+use App\Models\Customer;  
 
 class CustomerController extends Controller
 {
@@ -11,15 +11,15 @@ class CustomerController extends Controller
     {
         $url = url('/customer');
         $title = "Customer Registration";
-        // $customer = null;
-        $data = compact('url','title');
+        $customer = new Customer();
+        $data = compact('customer', 'url', 'title');
         return view('layout.customer')->with($data);
     }
 
     public function store(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());
+        // p($request->all());
+        // die;
         //Insert Query
         $customer = new Customer;
         $customer->name = $request['name'];
@@ -44,11 +44,37 @@ class CustomerController extends Controller
 
         }
 
+        public function trash(){
+            $customers = Customer::onlyTrashed()->get();
+            $data = compact('customers');
+            return view('layout.customer-trash')->with($data);
+        }
+
         public function delete($id)
         {
            $customer = Customer::find($id);
            if(!is_null($customer)){
             $customer->delete();
+           }
+           return redirect('customer');
+
+        }
+
+         public function forceDelete($id)
+        {
+           $customer = Customer::withTrashed()->find($id);
+           if(!is_null($customer)){
+            $customer->forceDelete();
+           }
+           return redirect()->back();
+
+        }
+
+        public function restore($id)
+        {
+           $customer = Customer::withTrashed()->find($id);
+           if(!is_null($customer)){
+            $customer->restore();
            }
            return redirect('customer');
 

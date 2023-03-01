@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 	<title>Form</title>   
 </head>
-<body >
+<body>   
 	<div class="container-fluid bg-dark">
     <div class="container">
   <nav class="navbar navbar-expand-sm">
@@ -22,9 +22,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{url('/')}}" style="color:white;">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+     <!--  <li class="nav-item">
         <a class="nav-link" href="{{url('/register')}}" style="color:white">Register</a>
-      </li>
+      </li> -->
        <li class="nav-item">
         <a class="nav-link" href="{{url('/customer')}}" style="color:white">Customer</a>
       </li>
@@ -43,13 +43,9 @@
 	<form action="{{$url}}" method="post">
     <!-- <form action="store" method="post"> -->
 		@csrf	
-    <div class="form-group">
-    <label for="">Id</label>
-    <input type="text" class="form-control" name="id"  value="{{$customer->customer_id}}"  required/>
- </div>
-<div class="form-group">
+<div class="form-group required">
     <label for="">Name</label>
-    <input type="text" class="form-control" name="name"  value="{{$customer->name}}"  required/>
+    <input type="text" class="form-control" name="name"  value="{{$customer->name}}"  />
  </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Email</label>
@@ -69,7 +65,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">State</label>
-    <input type="text" class="form-control" name="state" id="exampleInputPassword1"  value="{{$customer->state}}"  required>
+    <input type="text" class="form-control" name="state"   value="{{$customer->state}}"  required>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Address</label>

@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-	<title>View</title>   
+	<title>Customer Trash</title>   
 </head>
 <body>
 <div class="container-fluid bg-dark">
@@ -43,8 +43,8 @@
     <a href="{{route('customer.create')}}">
     <button class="btn btn-primary d-inline-block m-2 float-right">Add</button>
   </a>
-  <a href="{{url('customer/trash')}}">
-    <button class="btn btn-danger d-inline-block m-2 float-right">Go to trash</button>
+  <a href="{{url('customer')}}">
+    <button class="btn btn-primary d-inline-block m-2 float-right">Customer View</button>
   </a>
    <table class="table" class="table">  
      <thead>
@@ -90,11 +90,11 @@
            @endif
          </td>
          <td>
-          <a href="{{route('customer.delete', ['id' => $customer->customer_id])}}">
-           <button class="btn btn-danger">Trash</button>
+          <a href="{{route('customer.force-delete', ['id' => $customer->customer_id])}}">
+           <button class="btn btn-danger">Delete</button>
           </a>
-          <a href="{{route('customer.edit', ['id' => $customer->customer_id])}}">
-           <button class="btn btn-primary">Update</button>
+          <a href="{{route('customer.restore', ['id' => $customer->customer_id])}}">
+           <button class="btn btn-primary">Restore</button>
          </a>
          </td>
        </tr>

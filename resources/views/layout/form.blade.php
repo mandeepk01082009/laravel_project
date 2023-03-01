@@ -38,10 +38,11 @@
 <div class="container">
 <div class="row">
 	<div class="col-sm-12">
+    <h1 class="text-center">Registration</h1>
 <x-input type="text" name="name" label="Please enter your name"/>
 <x-input type="email" name="email" label="Please enter your email"/>
 <x-input type="password" name="password" label="Please enter your password"/>
-<x-input type="password" name="p assword_confirm" label="Please Confirm your password"/>
+<x-input type="password" name="password_confirm" label="Please Confirm your password"/>
 <button type="submit" class="btn btn-primary">Submit</button>
 </div>
 </div>
