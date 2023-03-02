@@ -12,4 +12,11 @@ class ContactController extends Controller
       return view('frontend.contact');
     
    }
+
+   public function upload(Request $request)
+   {
+      echo $request->file('image')->store('uploads');
+
+   }
+
 }
