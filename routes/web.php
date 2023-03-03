@@ -22,15 +22,20 @@ Route::get('/',function(){
 });
 Route::get('/register',[RegistrationController::class,'index']);
 Route::post('/register',[RegistrationController::class, 'register']);
-Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
-Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
-Route::get('/customer/force-delete/{id}', [CustomerController::class, 'forceDelete'])->name('customer.force-delete');
-Route::get('/customer/restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
-Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
-Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
-Route::get('/customer',[CustomerController::class, 'view']);
-Route::get('/customer/trash',[CustomerController::class, 'trash']);
-Route::post('/customer',[CustomerController::class, 'store']); 
+// ----------------------------------------
+Route::group(['prefix' => '/customer'], function (){
+Route::get('create', [CustomerController::class, 'create'])->name('customer.create');
+Route::get('delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+Route::get('force-delete/{id}', [CustomerController::class, 'forceDelete'])->name('customer.force-delete');
+Route::get('restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
+Route::get('edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+Route::post('update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+Route::get('/',[CustomerController::class, 'view']);
+Route::get('/trash',[CustomerController::class, 'trash']);
+Route::post('/',[CustomerController::class, 'store']);
+}); 
+//-------------------------------------------
+
 Route::get('get-all-session', function(){
     $session = session()->all();
     p($session);

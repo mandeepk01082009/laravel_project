@@ -22,9 +22,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{url('/')}}" style="color:white;">Home <span class="sr-only">(current)</span></a>
       </li>
-     <!--  <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="{{url('/register')}}" style="color:white">Register</a>
-      </li> -->
+      </li>
        <li class="nav-item">
         <a class="nav-link" href="{{url('/customer')}}" style="color:white">Customer</a>
       </li>
