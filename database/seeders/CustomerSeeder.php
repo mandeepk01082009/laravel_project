@@ -5,9 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Customer;
-use Faker\Factory as Faker;
+use Faker\Factory as Faker; // Faker is name given by us we can change it also.
 
-class CustomerSeeder extends Seeder
+class CustomerSeeder extends Seeder   
 {
     /**
      * Run the database seeds. 
@@ -17,7 +17,7 @@ class CustomerSeeder extends Seeder
     public function run() 
     {
         $faker = Faker::create();
-        for ($i=1; $i <= 100; $i++) { 
+        for ($i=1; $i <= 20; $i++) { 
         $customer = new Customer;
         $customer->name = $faker->name;
         $customer->email = $faker->email;

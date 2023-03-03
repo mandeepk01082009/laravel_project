@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 	<title>View</title>   
 </head>
 <body>
@@ -39,16 +39,30 @@
 </nav>
 </div>
 </div>
-	<div class="container">
-    <a href="{{route('customer.create')}}">
-    <button class="btn btn-primary d-inline-block m-2 float-right">Add</button>
-  </a>
-  <a href="{{url('customer/trash')}}">
-    <button class="btn btn-danger d-inline-block m-2 float-right">Go to trash</button>
-  </a>
+	<div class="container"> 
+    <div class="row m-2">
+      <form action=""  class="col-9 mt-2">
+        <div class="form-group">
+          <input type="search" name="search" class="form-control" value="{{$search}}" placeholder="Search by name or email">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a href="{{url('/customer')}}">
+          <button type="button" class=" btn btn-primary">Reset</button>
+        </a>
+      </form>
+      <div class="col-3">
+        <a href="{{route('customer.create')}}">
+        <button class="btn btn-primary d-inline-block m-2 float-right">Add</button>
+        </a>
+        <a href="{{url('customer/trash')}}">
+        <button class="btn btn-danger d-inline-block m-2 float-right">Go to trash</button>
+        </a>
+      </div>
+    </div>  
    <table class="table" class="table">  
      <thead>
       <tr>
+        <th>Sr.</th>
        <th>Name</th>
        <th>Email</th>
        <th>Gender</th>
@@ -57,12 +71,13 @@
        <th>Address</th>
        <th>Country</th>
        <th>Status</th>
-       <th colspan="2">Action</th>
+       <th >Action</th>
        </tr>
      </thead>
      <tbody>
       @foreach ($customers as $customer)
        <tr>
+         <td>{{$customer->customer_id}}</td>
          <td>{{$customer->name}}</td>
          <td>{{$customer->email}}</td>
          <td>
@@ -94,13 +109,16 @@
            <button class="btn btn-danger">Trash</button>
           </a>
           <a href="{{route('customer.edit', ['id' => $customer->customer_id])}}">
-           <button class="btn btn-primary">Update</button>
+           <button class="btn btn-primary">Edit</button>
          </a>
          </td>
        </tr>
        @endforeach
      </tbody>
    </table> 
+   <div class="row">
+     {{$customers->links()}}
+   </div>
   </div>
 </body>
 </html>

@@ -36,10 +36,16 @@ class CustomerController extends Controller
         //----------------
     }
 
-    public function view()
+    public function view(Request $request)
         {
-            $customers = Customer::all();
-            $data = compact('customers');
+            $search = $request['search'] ?? "";
+            if ($search != "") {
+                // where
+                $customers = Customer::where('name', 'LIKE', "%$search%")->orwhere('email', 'LIKE', "%$search%")->get();
+            }else{
+            $customers = Customer::paginate(15);
+            }
+            $data = compact('customers', 'search');
             return view('layout.customer-view')->with($data);
 
         }
