@@ -16,7 +16,7 @@
 <body>
 <div class="container-fluid bg-dark">
     <div class="container">
-  <nav class="navbar navbar-expand-sm">
+  <nav class="navbar navbar-expand-sm">  
   <a class="navbar-brand" href="#" style="color: white;">
     @if (session()->has('name'))
         {{session()->get('name')}}

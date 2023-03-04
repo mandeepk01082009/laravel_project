@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Customer;  
+use App\Models\Customer;    
   
 class CustomerController extends Controller
 {
@@ -41,9 +41,9 @@ class CustomerController extends Controller
             $search = $request['search'] ?? "";
             if ($search != "") {
                 // where
-                $customers = Customer::where('name', 'LIKE', "%$search%")->orwhere('email', 'LIKE', "%$search%")->get();
+                $customers = Customer::where('name', 'LIKE', "%$search%")->orwhere('email', 'LIKE', "%$search%")->paginate();
             }else{
-            $customers = Customer::paginate(15);
+            $customers = Customer::paginate(10);
             }
             $data = compact('customers', 'search');
             return view('layout.customer-view')->with($data);
